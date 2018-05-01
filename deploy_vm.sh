@@ -6,7 +6,7 @@
 # 1: Username 
 # 2: Hostname
 
-#cp cloud-init-form.txt cloud-init-temp.txt
+cp cloud-init-form.txt cloud-init-temp.txt
 PUBLIC_KEY=`cat ~/.ssh/id_rsa.pub`
 
 # set public key
