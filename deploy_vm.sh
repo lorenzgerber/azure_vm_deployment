@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# This script needs Microsoft Azure Cli installed.
+# This script needs Microsoft Azure Cli installed. The sed -i 
+# commands are formatted to work on default OSX installed sed. 
 
 # Positional cli args:
 # 1: Username 
