@@ -13,8 +13,8 @@ PUBLIC_KEY=`cat ~/.ssh/id_rsa.pub`
 sed 's%PUBLIC_KEY%'"$PUBLIC_KEY"'%' <cloud-init-form.txt >cloud-init-temp.txt
 
 # set user and hostname from pos args
-sed -i 's/USERNAME/'"${1?"Username missing. Usage: deploy_vim USERNAME HOSTNAME"}"'/g' cloud-init-temp.txt
-sed -i 's/HOSTNAME/'"${2?"Hostname missing. Usage: deploy_vim USERNAME HOSTNAME"}"'/g' cloud-init-temp.txt
+sed -i '' 's/USERNAME/'"${1?"Username missing. Usage: deploy_vim USERNAME HOSTNAME"}"'/g' cloud-init-temp.txt
+sed -i '' 's/HOSTNAME/'"${2?"Hostname missing. Usage: deploy_vim USERNAME HOSTNAME"}"'/g' cloud-init-temp.txt
 
 
 # Create resource group if it does not exist yet
