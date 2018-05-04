@@ -1,0 +1,32 @@
+#cloud-config
+
+hostname: HOSTNAME 
+
+users:
+  - default
+  - name: USERNAME
+    groups: sudo
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh-authorized-keys:
+      PUBLIC_KEY 
+
+runcmd:
+  -  'sudo apt-get update'
+  -  'sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common'
+  -  'curl -fsSL "https://download.docker.com/linux/ubuntu/gpg" | sudo apt-key add -'
+  -  'sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"'
+  -  'sudo apt-get update'
+  -  'sudo apt-get -y install docker-ce'
+  -  'sudo usermod -aG docker USERNAME'
+  -  'sudo apt-get -y install python dh-autoreconf build-essential libarchive-dev'
+  -  'cd /home/USERNAME' 
+  -  'git clone https://github.com/singularityware/singularity.git'
+  -  'cd singularity'
+  -  './autogen.sh'
+  -  './configure --prefix=/usr/local --sysconfdir=/etc'
+  -  'make'
+  -  'sudo make install'
+  -  'cd /home/USERNAME && mkdir git && cd git'
+  -  'git clone https://github.com/lorenzgerber/containers-benchs.git'
+  -  'apt-get install -y libopenmpi-dev openmpi-common openmpi-bin openmpi-doc'
